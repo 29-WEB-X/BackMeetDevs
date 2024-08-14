@@ -31,6 +31,14 @@ const userSchema = new Schema({
     required: true,
     type: String,
   },
+  avatar: {
+    type: String,
+    required: false,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
 });
 
 export default model('User', userSchema);
