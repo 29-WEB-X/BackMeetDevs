@@ -48,4 +48,10 @@ api.get('/test', (req, res) => {
   });
 });
 
+api.get('/', (req, res) => {
+  return res.json({
+    msg: 'Ruta princiapal',
+  });
+});
+
 export default api;
