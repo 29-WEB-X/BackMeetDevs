@@ -1,6 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import authRouter from './routes/authRoutes.js';
+import './config/database.js';
 
 const api = express();
 
@@ -50,7 +51,7 @@ api.get('/test', (req, res) => {
 
 api.get('/', (req, res) => {
   return res.json({
-    msg: 'Ruta princiapal',
+    msg: 'Ruta princiapal cambiada again',
   });
 });
 
