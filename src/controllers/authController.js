@@ -1,5 +1,6 @@
 import User from '../models/User.js';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken'
 
 export const register = async (req, res) => {
   try {
@@ -17,3 +18,37 @@ export const register = async (req, res) => {
     });
   }
 };
+
+export const login = async (req, res) => {
+  if ((!req.body.nickname && !req.body.email) || !req.body.password) {
+    return res.status(400).json({ msg: "Faltan datos para iniciar sesión" })
+  }
+  try {
+    let user = null
+    const userByNickname = await User.findOne({ nickname: req.body.nickname })
+    const userByEmail = await User.findOne({ email: req.body.email })
+    if (!userByNickname && !userByEmail) {
+      return res.status(401).json({ msg: "Datos incorrectos" })
+    } else {
+      user = userByNickname || userByEmail
+    }
+
+    passwordIsValid = await bcrypt.compare(req.body.password, user.password)
+
+    if (!passwordIsValid) {
+      return res.status(400).json("Datos incorrectos")
+    }
+
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+      expiresIn: '30d'
+    })
+
+    return res.status(200).json({
+      _id: user._id,
+      email: user.email,
+      token: token
+    })
+  } catch (error) {
+    return res.status(500).json({ msg: `Error al iniciar sesión:${error}` })
+  }
+}
