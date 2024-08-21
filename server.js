@@ -4,6 +4,8 @@ import api from './src/api.js';
 const server = http.createServer(api);
 const PORT = 8000;
 
+const a = 0;
+
 server.on('listening', () => {
   console.log(`Server corriendo en puerto ${PORT} `);
 });
