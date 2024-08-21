@@ -13,18 +13,17 @@ api.use(morgan('dev'));
 
 /**
  * auth
- *  register /auth/register POST
- *  login   /auth/login POST
+ *  register /auth/register POST ✅
+ *  login   /auth/login POST - Adrian Juárez
  *  verifyEmail /auth/verify GET
  *  resendEmail /auth/resend POST
  *  me token /auth/me GET
- *  updateInfo token /auth/udpate PUT o PATCH
+ *  updateInfo token /auth/udpate PUT o PATCH Angel Santiago
  * posts
  *  post token /posts POST
- *  getGeneralPosts token /posts?s=general GET
- *  getForYouPosts token  /posts?s=fyp GET
- *  getMyPosts token /myposts GET
- *  getPostById token /posts/{postId} GET
+ *  getGeneralPosts token /posts?s=general GET Isaac Contreras
+ *  getForYouPosts token  /posts?s=fyp GET Isaac Contreras
+ *  getPostById token /posts/{postId} GET Jhonatan
  * users
  *  getUserPosts token /users/{userId}/posts GET
  * comments
@@ -33,8 +32,8 @@ api.use(morgan('dev'));
  *  like token /posts/{postId}/like PUT
  *  getMyLikes token /mylikes GET
  * follow
- *  follow  token /users/{userId}/follow PUT
- *  follows token /users/{userId}/followers GET
+ *  follow  token /users/{userId}/follow PUT Jorge
+ *  follows token /users/{userId}/followers GET Sait Uzziel
  *  following token /users/{userId}/following GET
  *
  * ** Notifications
