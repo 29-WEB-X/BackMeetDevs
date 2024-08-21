@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon -L server.js",
-    "test": "echo no test"
+    "test": "echo no test",
+    "prepare": "husky"
   },
   "type": "module",
   "keywords": [],
@@ -19,6 +20,9 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.4.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "husky": "^9.1.5",
     "nodemon": "^3.1.4"
   }
 }
