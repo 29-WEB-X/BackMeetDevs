@@ -33,7 +33,7 @@ export const login = async (req, res) => {
       user = userByNickname || userByEmail
     }
 
-    passwordIsValid = await bcrypt.compare(req.body.password, user.password)
+    const passwordIsValid = await bcrypt.compare(req.body.password, user.password)
 
     if (!passwordIsValid) {
       return res.status(400).json("Datos incorrectos")
