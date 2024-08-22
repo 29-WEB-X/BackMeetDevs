@@ -1,0 +1,2 @@
+echo "Validando Commit message"
+npm run lint

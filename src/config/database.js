@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 
 mongoose.connection.on('open', () => {
   console.log('Conexión a la base de datos exitosa');
+  console.log(`MONGO_URI ${process.env.MONGO_URI}`);
 });
 
 mongoose.connection.on('error', (error) => {
@@ -9,7 +10,8 @@ mongoose.connection.on('error', (error) => {
   console.error(error);
 });
 
-mongoose.connect('mongodb://mongo:27017/devsstorage', {
+// 'mongodb://mongo:27017/devsstorage'
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
