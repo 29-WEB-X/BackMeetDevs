@@ -1,7 +1,6 @@
 import express from 'express';
 import morgan from 'morgan';
 import authRouter from './routes/authRoutes.js';
-import './config/database.js';
 
 const api = express();
 

@@ -7,7 +7,7 @@
     "dev": "nodemon -L server.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test": "echo no test",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "prepare": "husky"
   },
   "type": "module",
@@ -29,6 +29,9 @@
     "eslint": "^9.9.0",
     "globals": "^15.9.0",
     "husky": "^9.1.5",
-    "nodemon": "^3.1.4"
+    "jest": "^29.7.0",
+    "mongodb-memory-server": "^10.0.0",
+    "nodemon": "^3.1.4",
+    "supertest": "^7.0.0"
   }
 }
