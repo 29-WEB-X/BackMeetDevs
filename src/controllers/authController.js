@@ -23,6 +23,8 @@ export const register = async (req, res) => {
       });
     }
 
+    req.body.avatar = `https://api.dicebear.com/9.x/avataaars-neutral/svg?seed=${nickname}`;
+
     const newUser = await User.create(req.body);
     newUser.password = undefined;
     return res.status(201).json({
