@@ -1,6 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import authRouter from './routes/authRoutes.js';
+import userRouter from './routes/userRoutes.js';
 
 const api = express();
 
@@ -40,6 +41,7 @@ api.use(morgan('dev'));
  */
 
 api.use('/auth', authRouter);
+api.use('/users', userRouter);
 
 api.get('/test', (req, res) => {
   return res.json({
