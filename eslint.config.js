@@ -5,13 +5,11 @@ export default [
   { languageOptions: { globals: globals.node } },
   pluginJs.configs.recommended,
   {
-    overrides: [
-      {
-        files: ['tests/**/*'],
-        env: {
-          jest: true,
-        },
+    files: ['tests/**/*'],
+    languageOptions: {
+      globals: {
+        ...globals.jest,
       },
-    ],
+    },
   },
 ];
