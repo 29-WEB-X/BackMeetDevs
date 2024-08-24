@@ -14,14 +14,16 @@ WORKDIR /api
 COPY package*.json ./
 
 # Instalar dependencias
-RUN npm install
+# RUN npm install
 
 # Copia el resto del proyecto
 COPY . .
 
 # Exponer el puerto 8000
 EXPOSE 8000
+# Puerto para debug
+EXPOSE 9229
 
 # Ejecutar el proyecto dentor del contendor
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start"]
 

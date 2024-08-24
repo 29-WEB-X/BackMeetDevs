@@ -1,6 +1,5 @@
 import supertest from 'supertest';
 import api from '../src/api.js';
-import { connect, disconnect } from './setup.js';
 
 //TEST register
 /**
@@ -16,8 +15,6 @@ describe('Test /auth/register', () => {
      * comprobar que regresa un 200
      */
 
-    await connect();
-
     const response = await supertest(api).post('/auth/register').send({
       name: 'Fernando',
       email: 'fernando@prueba.com',
@@ -30,12 +27,8 @@ describe('Test /auth/register', () => {
     });
 
     expect(response.statusCode).toBe(201);
-
-    await disconnect();
   });
   test('Duplicated nickname or email', async () => {
-    await connect();
-
     const responseFirstUser = await supertest(api).post('/auth/register').send({
       name: 'Fernando',
       email: 'fernando@prueba.com',
@@ -62,15 +55,13 @@ describe('Test /auth/register', () => {
         password: '123',
       });
 
-    expect(responseSecondUser.statusCode).toBe(400);
-    expect(responseSecondUser.body.msg).toBe('Duplicated user');
-
-    await disconnect();
+    expect(responseSecondUser.statusCode).toBe(404);
+    expect(responseSecondUser.body.code).toBe('DUPLICATED_USER');
   });
   test('Empty body', async () => {
     const response = await supertest(api).post('/auth/register').send({});
     expect(response.statusCode).toBe(400);
-    expect(response.body.msg).toBe('Invalid Body');
+    expect(response.body.code).toBe('INVALID_BODY');
   });
 });
 
@@ -80,3 +71,5 @@ describe('Test /auth/register', () => {
  * login con credenciales erroneas
  * login con campos incompletos
  */
+
+// describe('Test /auth/login');

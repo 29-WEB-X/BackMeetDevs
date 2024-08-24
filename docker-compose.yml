@@ -8,13 +8,14 @@ services:
       dockerfile: Dockerfile
     ports:
       - '8000:8000'
+      - '9229:9229'
     volumes:
       - .:/api
     env_file:
       - .env
     depends_on:
       - mongo
-    command: ['npm', 'run', 'dev']
+    command: ['npm', 'run', 'debug']
 
   mongo:
     image: mongo:6.0
