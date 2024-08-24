@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node --env-file=.env server.js",
-    "dev": "nodemon -L server.js",
+    "start": "node server.js",
+    "dev": "nodemon -L --env-file=.env.dev  server.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --changedSince=origin/main",
-    "test:all": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:latest": "node --experimental-vm-modules node_modules/jest/bin/jest.js --changedSince=origin/main & start ./coverage/lcov-report/index.html",
+    "test:all": "node --experimental-vm-modules node_modules/jest/bin/jest.js & start ./coverage/lcov-report/index.html",
+    "open:coverage": "start ./coverage/lcov-report/index.html",
     "prepare": "husky"
   },
   "type": "module",
@@ -17,6 +18,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@vinejs/vine": "^2.1.0",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.41.3",
     "express": "^4.19.2",

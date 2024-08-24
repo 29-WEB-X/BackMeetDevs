@@ -2,19 +2,21 @@ import express from 'express';
 import morgan from 'morgan';
 import authRouter from './routes/authRoutes.js';
 import userRouter from './routes/userRoutes.js';
+import postRouter from './routes/postRoutes.js';
+import errorHandler from './utils/errorHandler.js';
 
 const api = express();
 
 api.use(express.json());
 
-api.use(morgan('dev'));
+if (process.env.NODE_ENV != 'test') {
+  api.use(morgan('dev'));
+}
 
 /**TODO: La magia */
 
 /**
  * auth
- *  register /auth/register POST ✅
- *  login   /auth/login POST - Adrian Juárez
  *  verifyEmail /auth/verify GET
  *  resendEmail /auth/resend POST
  *  me token /auth/me GET
@@ -42,6 +44,7 @@ api.use(morgan('dev'));
 
 api.use('/auth', authRouter);
 api.use('/users', userRouter);
+api.use('/posts', postRouter);
 
 api.get('/test', (req, res) => {
   return res.json({
@@ -54,5 +57,7 @@ api.get('/', (req, res) => {
     msg: 'Ruta princiapal cambiada again',
   });
 });
+
+api.use(errorHandler);
 
 export default api;
