@@ -25,5 +25,5 @@ EXPOSE 8000
 EXPOSE 9229
 
 # Ejecutar el proyecto dentor del contendor
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start"]
 
