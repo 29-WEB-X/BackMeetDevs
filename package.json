@@ -7,8 +7,8 @@
     "dev": "nodemon -L --env-file=.env.dev  server.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test:latest": "node --experimental-vm-modules node_modules/jest/bin/jest.js --changedSince=origin/main & start ./coverage/lcov-report/index.html",
-    "test:all": "node --experimental-vm-modules node_modules/jest/bin/jest.js & start ./coverage/lcov-report/index.html",
+    "test:latest": "node --experimental-vm-modules node_modules/jest/bin/jest.js --changedSince=origin/main",
+    "test:all": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "open:coverage": "start ./coverage/lcov-report/index.html",
     "prepare": "husky"
   },
