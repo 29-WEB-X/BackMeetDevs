@@ -1,9 +1,10 @@
 import { Router } from 'express';
 import * as userController from '../controllers/userController.js';
 import multer from 'multer';
-import storage from '../config/cloudinary.js';
+import { createStorage } from '../config/cloudinary.js';
 
-const upload = multer({ storage });
+const upload = multer({ storage: createStorage('avatars') });
+
 const userRouter = Router();
 
 userRouter.patch(
@@ -11,6 +12,6 @@ userRouter.patch(
   upload.single('avatar'),
   userController.changeImage
 );
-userRouter.put('/update',userController.updateUser);
+userRouter.put('/update', userController.updateUser);
 
 export default userRouter;

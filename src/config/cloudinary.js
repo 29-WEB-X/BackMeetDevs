@@ -7,12 +7,14 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const storage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: {
-    folder: 'avatars',
-    format: async () => 'jpeg',
-  },
-});
+const createStorage = (folder) => {
+  return new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+      folder,
+      format: async () => 'jpeg',
+    },
+  });
+};
 
-export default storage;
+export { createStorage };

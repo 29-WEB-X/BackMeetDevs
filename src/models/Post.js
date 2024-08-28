@@ -14,10 +14,10 @@ const postSchema = new Schema(
     images: {
       type: [String],
     },
-    poll: {
-      //TODO poll schema
-      type: {},
-    },
+    // poll: {
+    //   //TODO poll schema
+    //   type: {},
+    // },
   },
   {
     timestamps: true,

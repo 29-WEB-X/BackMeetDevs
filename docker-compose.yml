@@ -17,5 +17,11 @@ services:
 
   mongo:
     image: mongo:6.0
+    volumes:
+      - mongdb_data:/data/db
     ports:
       - '27017:27017'
+
+volumes:
+  mongdb_data:
+    driver: local

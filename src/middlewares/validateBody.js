@@ -1,6 +1,7 @@
 import vine from '@vinejs/vine';
 import CustomError from '../utils/CustomError.js';
 import ERROR_CODES from '../utils/errorCodes.js';
+
 const validateBody = (schema) => async (req, res, next) => {
   try {
     const output = await vine.validate({
