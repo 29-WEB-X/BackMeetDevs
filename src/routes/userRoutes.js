@@ -4,7 +4,6 @@ import multer from 'multer';
 import storage from '../config/cloudinary.js';
 
 const upload = multer({ storage });
-
 const userRouter = Router();
 
 userRouter.patch(
@@ -12,5 +11,6 @@ userRouter.patch(
   upload.single('avatar'),
   userController.changeImage
 );
+userRouter.put('/update',userController.updateUser);
 
 export default userRouter;
