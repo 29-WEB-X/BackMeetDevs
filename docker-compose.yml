@@ -15,9 +15,15 @@ services:
       - .env
     depends_on:
       - mongo
-    command: ['npm', 'run', 'debug']
+    command: ['npm', 'run', 'start']
 
   mongo:
     image: mongo:6.0
+    volumes:
+      - mongdb_data:/data/db
     ports:
       - '27017:27017'
+
+volumes:
+  mongdb_data:
+    driver: local

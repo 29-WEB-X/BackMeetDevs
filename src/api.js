@@ -9,9 +9,9 @@ const api = express();
 
 api.use(express.json());
 
-if (process.env.NODE_ENV != 'test') {
-  api.use(morgan('dev'));
-}
+// if (process.env.NODE_ENV != 'test') {
+api.use(morgan('dev'));
+// }
 
 /**TODO: La magia */
 

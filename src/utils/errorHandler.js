@@ -1,7 +1,7 @@
 import CustomError from './CustomError.js';
 
 const errorHandler = (err, _req, res, _next) => {
-  //TODO change to wingston
+  //TODO change to winston
   // console.error(err.stack);
 
   if (err instanceof CustomError) {
