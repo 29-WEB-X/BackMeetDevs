@@ -1,9 +1,20 @@
-// import Post from '../models/Post.js';
+import Post from '../models/Post.js';
 
 const create = async (req, res) => {
+  if (req.files && req.files.length > 0) {
+    req.body.images = req.files.map((file) => file.path);
+  } else {
+    req.body.images = [];
+  }
+
+  const newPost = await Post.create({
+    author: req.user.id,
+    ...req.body,
+  });
+
   return res.json({
-    msg: 'create post',
-    userId: req.user.id,
+    msg: 'Post created',
+    post: newPost,
   });
 };
 

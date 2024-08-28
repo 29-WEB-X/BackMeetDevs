@@ -1,9 +1,9 @@
 import { Router } from 'express';
 import * as userController from '../controllers/userController.js';
 import multer from 'multer';
-import storage from '../config/cloudinary.js';
+import { createStorage } from '../config/cloudinary.js';
 
-const upload = multer({ storage });
+const upload = multer({ storage: createStorage('avatars') });
 
 const userRouter = Router();
 
