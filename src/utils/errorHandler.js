@@ -1,28 +1,18 @@
-import CustomError from './CustomError.js';
+import logger from '../config/logger.js';
 
 const errorHandler = (err, _req, res, _next) => {
-  //TODO change to winston
-  // console.error(err.stack);
+  let responseBody = {
+    code: err.code || 'UNKNOWN_ERROR',
+    message: err.message || 'Something went wrong',
+    ...(process.env.NODE_ENV === 'development' && {
+      stack: err.stack,
+    }),
+  };
+  let statusCode = err.statusCode || 500;
 
-  if (err instanceof CustomError) {
-    res.status(err.statusCode || 500);
-    res.json({
-      message: err.message,
-      code: err.code,
-      ...(process.env.NODE_ENV === 'development' && {
-        stack: err.stack,
-      }),
-    });
-  } else {
-    res.status(500);
-    res.json({
-      code: 'UNKNOWN_ERROR',
-      message: 'Something went wrong',
-      ...(process.env.NODE_ENV === 'development' && {
-        stack: err.stack,
-      }),
-    });
-  }
+  logger.error(responseBody.code, responseBody);
+
+  res.status(statusCode).json(responseBody);
 };
 
 export default errorHandler;

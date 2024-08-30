@@ -1,16 +1,19 @@
 import express from 'express';
-import morgan from 'morgan';
+// import morgan from 'morgan';
 import authRouter from './routes/authRoutes.js';
 import userRouter from './routes/userRoutes.js';
 import postRouter from './routes/postRoutes.js';
 import errorHandler from './utils/errorHandler.js';
+import { logReqAndRes } from './config/logger.js';
 
 const api = express();
 
 api.use(express.json());
 
+api.use(logReqAndRes);
+
 // if (process.env.NODE_ENV != 'test') {
-api.use(morgan('dev'));
+// api.use(morgan('dev'));
 // }
 
 /**TODO: La magia */
